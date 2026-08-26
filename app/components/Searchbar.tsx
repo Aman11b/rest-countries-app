@@ -1,12 +1,17 @@
+"use client";
+
 import { Search } from "lucide-react";
-export default function Searchbar() {
+import { SearchProps } from "../lib/types";
+export default function Searchbar({ search, setSearch }: SearchProps) {
   return (
-    <div className="flex items-center gap-4 rounded-md bg-(--element) px-6 py-3 shadow-sm sm:w-120">
+    <div className="flex items-center gap-4 rounded-md px-6 py-3 shadow-sm sm:w-120 bg-(--element)">
       <Search size={20} />
       <input
         type="text"
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
         placeholder="Search for a Country"
-        className="w-full px-2 py-1"
+        className="w-full px-2 py-1 text-(--foreground) bg-transparent outline-none placeholder:text-(--input)"
       />
     </div>
   );

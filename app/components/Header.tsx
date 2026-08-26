@@ -12,7 +12,7 @@ export default function Header() {
   }
   return (
     <header className="bg-(--element) shadow-sm transition-colors duration-300">
-      <div className="mx-auto flex max-w-full justify-between items-center px-6 py-4">
+      <div className="mx-auto flex max-w-full justify-between items-center px-10 py-4">
         <h1 className="text-lg font-extrabold">Where in the world?</h1>
         <button
           type="button"

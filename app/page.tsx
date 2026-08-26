@@ -1,14 +1,10 @@
-import Filter from "./components/Filter";
-import Searchbar from "./components/Searchbar";
+import CountryList from "./components/CountryList";
+import countires from "./data/data.json";
 
 export default function Home() {
   return (
-    <main className="px-6 py-8">
-      {/* Search and filter */}
-      <section className="flex flex-col justify-between sm:flex-row sm:items-center sm:justify-between">
-        <Searchbar />
-        <Filter />
-      </section>
+    <main className="p-10">
+      <CountryList countries={countires} />
     </main>
   );
 }
