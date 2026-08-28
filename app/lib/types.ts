@@ -47,13 +47,29 @@
 
 export type Country = {
   name: string;
+  topLevelDomain?: string[];
+  alpha3Code: string;
   region: string;
   population: number;
   numericCode?: string;
+  nativeName?: string;
+  subregion?: string;
+  borders?: string[];
   flags: {
     svg: string;
     png: string;
   };
+  currencies?: {
+    code: string;
+    name: string;
+    symbol: string;
+  }[];
+  languages?: {
+    iso639_1?: string;
+    iso639_2: string;
+    name: string;
+    nativeName?: string;
+  }[];
   capital?: string;
 };
 
@@ -70,4 +86,10 @@ export type FilterProp = {
   countries: Country[];
   region: string;
   setRegion: (region: string) => void;
+};
+
+export type CountryPageProps = {
+  params: Promise<{
+    code: string;
+  }>;
 };

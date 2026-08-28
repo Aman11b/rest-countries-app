@@ -16,7 +16,7 @@ export default function Header() {
         <h1 className="text-lg font-extrabold">Where in the world?</h1>
         <button
           type="button"
-          className="flex items-center gap-2 text-sm font-semibold transition-colors duration-300 "
+          className="flex items-center gap-2 text-sm font-semibold transition-colors duration-300 cursor-pointer"
           onClick={toggleDarkMode}
         >
           {darkMode ? <SunIcon size={18} /> : <MoonIcon size={18} />}

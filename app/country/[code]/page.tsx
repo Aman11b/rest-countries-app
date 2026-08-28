@@ -1,0 +1,94 @@
+import BackButton from "@/app/components/BackButton";
+import { CountryPageProps } from "@/app/lib/types";
+import {
+  formatPopulation,
+  getBorderCountries,
+  getCountry,
+} from "@/app/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
+export default async function CountryPage({ params }: CountryPageProps) {
+  const { code } = await params;
+
+  const country = getCountry(code);
+
+  const borderCountries = getBorderCountries(country?.borders);
+
+  if (!country) {
+    notFound();
+  }
+  return (
+    <main className="px-10 py-12 ">
+      <BackButton />
+      <div className="mt-16 flex flex-col gap-12 md:flex-row md:items-center lg:gap-20 md:gap-16 ">
+        <Image
+          src={country?.flags.svg}
+          height={860}
+          width={1280}
+          alt={`${country?.name} flag`}
+          className="w-full max-w-xl object-cover"
+        />
+        <div className="flex-1">
+          <h1 className="text-3xl font-extrabold">{country.name}</h1>
+          <div className="mt-8 grid gap-8 sm:grid-cols-2">
+            <div className="space-y-3">
+              <p>
+                <span className="font-semibold">Native Name: </span>{" "}
+                {country.nativeName}
+              </p>
+              <p>
+                <span className="font-semibold">Population:</span>{" "}
+                {formatPopulation(country.population)}
+              </p>
+              <p>
+                <span className="font-semibold"> Region:</span> {country.region}
+              </p>
+              <p>
+                <span className="font-semibold">Sub Region:</span>{" "}
+                {country.subregion}
+              </p>
+              <p>
+                <span className="font-semibold"> Capital:</span>{" "}
+                {country.capital || "N/A"}
+              </p>
+            </div>
+            <div className="space-y-3">
+              <p>
+                <span className="font-semibold">Top Level Domain: </span>{" "}
+                {country.topLevelDomain?.join(", ")}
+              </p>
+              <p>
+                <span className="font-semibold"> Currencies:</span>{" "}
+                {country.currencies
+                  ?.map((currency) => currency.name)
+                  .join(", ")}
+              </p>
+              <p>
+                <span className="font-semibold">Language: </span>{" "}
+                {country.languages?.map((language) => language.name).join(", ")}
+              </p>
+            </div>
+          </div>
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <span className="font-semibold"> Border Countries: </span>
+            {borderCountries.length > 0 ? (
+              borderCountries.map((borderCountry) => (
+                <Link
+                  key={borderCountry.alpha3Code}
+                  href={`/country/${borderCountry.alpha3Code}`}
+                  className="rounded-md bg-(--element) px-5 py-2 text-sm shadow-sm hover:shadow-md"
+                >
+                  {borderCountry.name}
+                </Link>
+              ))
+            ) : (
+              <span>None</span>
+            )}
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
