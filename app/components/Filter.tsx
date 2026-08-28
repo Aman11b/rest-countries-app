@@ -1,20 +1,27 @@
-export default function Filter() {
+import { FilterProp } from "../lib/types";
+import { getRegion } from "../lib/utils";
+
+export default function Filter({ countries, region, setRegion }: FilterProp) {
+  const regions = getRegion(countries);
+
   return (
     <div className="w-52 rounded-md bg-(--element) py-4 px-5 shadow-sm outline-none">
       <select
-        defaultValue=""
         aria-label="Filter countries by region"
         className="w-full outline-none"
+        value={region}
+        onChange={(event) => setRegion(event.target.value)}
       >
-        <option value="" hidden>
+        <option value="" hiden>
           Filter by Region
         </option>
+        <option value="">All Region</option>
 
-        <option value="africa">Africa</option>
-        <option value="america">America</option>
-        <option value="asia">Asia</option>
-        <option value="europe">Europe</option>
-        <option value="oceania">Oceania</option>
+        {regions.map((region) => (
+          <option key={region} value={region}>
+            {region}
+          </option>
+        ))}
       </select>
     </div>
   );

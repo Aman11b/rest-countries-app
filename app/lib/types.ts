@@ -65,3 +65,9 @@ export type SearchProps = {
 export type CountryListProps = {
   countries: Country[];
 };
+
+export type FilterProp = {
+  countries: Country[];
+  region: string;
+  setRegion: (region: string) => void;
+};
