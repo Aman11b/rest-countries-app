@@ -12,7 +12,7 @@ export default function Filter({ countries, region, setRegion }: FilterProp) {
         value={region}
         onChange={(event) => setRegion(event.target.value)}
       >
-        <option value="" hiden>
+        <option value="" hidden>
           Filter by Region
         </option>
         <option value="">All Region</option>

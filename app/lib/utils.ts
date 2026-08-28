@@ -11,9 +11,6 @@ export function filterCountries(
 ) {
   const query = search.trim().toLowerCase();
 
-  if (!query) {
-    return countries;
-  }
   return countries.filter((country) => {
     const matchesSearch = country.name.toLowerCase().startsWith(query);
 
