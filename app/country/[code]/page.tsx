@@ -20,20 +20,24 @@ export default async function CountryPage({ params }: CountryPageProps) {
     notFound();
   }
   return (
-    <main className="px-10 py-12 ">
+    <main className="px-6 py-8 sm:px-8 sm:py-10 md:px10 md:py-12">
       <BackButton />
-      <div className="mt-16 flex flex-col gap-12 md:flex-row md:items-center lg:gap-20 md:gap-16 ">
-        <Image
-          src={country?.flags.svg}
-          height={860}
-          width={1280}
-          alt={`${country?.name} flag`}
-          className="w-full max-w-xl object-cover"
-        />
-        <div className="flex-1">
-          <h1 className="text-3xl font-extrabold">{country.name}</h1>
-          <div className="mt-8 grid gap-8 sm:grid-cols-2">
-            <div className="space-y-3">
+      <div className="mt-12 flex flex-col gap-10 sm:gap-12 ms:mt-16 md:flex-row md:items-center  lg:gap-20 md:gap-16 ">
+        <div className="w-full md:w-1/2">
+          <Image
+            src={country?.flags.svg}
+            height={860}
+            width={1280}
+            alt={`${country?.name} flag`}
+            className="w-full h-auto object-cover"
+          />
+        </div>
+        <div className="w-full md:w-1/2">
+          <h1 className="text-2xl sm:text-3xl font-extrabold">
+            {country.name}
+          </h1>
+          <div className="mt-6 sm:mt-8 grid gap-8 sm:grid-cols-2">
+            <div className="space-y-3 text-sm sm:text-base">
               <p>
                 <span className="font-semibold">Native Name: </span>{" "}
                 {country.nativeName}
@@ -54,7 +58,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 {country.capital || "N/A"}
               </p>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-3 text-sm sm:text-base">
               <p>
                 <span className="font-semibold">Top Level Domain: </span>{" "}
                 {country.topLevelDomain?.join(", ")}
@@ -71,18 +75,20 @@ export default async function CountryPage({ params }: CountryPageProps) {
               </p>
             </div>
           </div>
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <span className="font-semibold"> Border Countries: </span>
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3 sm:items-start sm:gap-4">
+            <span className="font-semibold shrink-0"> Border Countries: </span>
             {borderCountries.length > 0 ? (
-              borderCountries.map((borderCountry) => (
-                <Link
-                  key={borderCountry.alpha3Code}
-                  href={`/country/${borderCountry.alpha3Code}`}
-                  className="rounded-md bg-(--element) px-5 py-2 text-sm shadow-sm hover:shadow-md"
-                >
-                  {borderCountry.name}
-                </Link>
-              ))
+              <div className="flex flex-wrap gap-2">
+                {borderCountries.map((borderCountry) => (
+                  <Link
+                    key={borderCountry.alpha3Code}
+                    href={`/country/${borderCountry.alpha3Code}`}
+                    className="rounded-md bg-(--element) px-4 py-2 text-sm shadow-sm transition-shadow hover:shadow-md"
+                  >
+                    {borderCountry.name}
+                  </Link>
+                ))}
+              </div>
             ) : (
               <span>None</span>
             )}

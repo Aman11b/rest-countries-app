@@ -5,10 +5,10 @@ export default function Filter({ countries, region, setRegion }: FilterProp) {
   const regions = getRegion(countries);
 
   return (
-    <div className="w-52 rounded-md bg-(--element) py-4 px-5 shadow-sm outline-none">
+    <div className="w-full md:w-[30%] rounded-md bg-(--element) py-4 px-5 shadow-sm ">
       <select
         aria-label="Filter countries by region"
-        className="w-full outline-none"
+        className="w-full outline-none cursor-pointer bg-transparent"
         value={region}
         onChange={(event) => setRegion(event.target.value)}
       >

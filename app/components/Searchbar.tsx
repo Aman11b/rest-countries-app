@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 import { SearchProps } from "../lib/types";
 export default function Searchbar({ search, setSearch }: SearchProps) {
   return (
-    <div className="flex items-center gap-4 rounded-md px-6 py-3 shadow-sm sm:w-120 bg-(--element)">
+    <div className="flex md:w-[70%] w-full items-center gap-4 rounded-md px-6 py-3 shadow-sm bg-(--element)">
       <Search size={20} />
       <input
         type="text"
