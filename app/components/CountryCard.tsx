@@ -5,8 +5,12 @@ import Link from "next/link";
 
 type CountryCardProp = {
   country: Country;
+  priority?: boolean;
 };
-export default function CountryCard({ country }: CountryCardProp) {
+export default function CountryCard({
+  country,
+  priority = false,
+}: CountryCardProp) {
   return (
     <Link
       href={`/country/${country.alpha3Code}`}
@@ -19,6 +23,7 @@ export default function CountryCard({ country }: CountryCardProp) {
           className="w-full object-cover h-48 sm:h-44 "
           width={640}
           height={360}
+          loading={priority ? "eager" : "lazy"}
         />
 
         <div className="p-6 font-semibold md:p-5 sm:p-4 ">
