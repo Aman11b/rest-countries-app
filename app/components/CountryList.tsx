@@ -24,7 +24,7 @@ export default function CountryList({ countries }: CountryListProps) {
         <section className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 ">
           {filteredCountries.map((country, index) => (
             <CountryCard
-              key={country.numericCode}
+              key={country.alpha3Code}
               country={country}
               priority={index === 0}
             />

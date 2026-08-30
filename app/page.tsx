@@ -1,10 +1,22 @@
 import CountryList from "./components/CountryList";
-import countires from "./data/data.json";
+import countiresData from "./data/data.json";
 
 export default function Home() {
+  const countries = countiresData.map(
+    ({ name, alpha3Code, region, population, capital, flags }) => ({
+      name,
+      alpha3Code,
+      region,
+      population,
+      capital,
+      flags: {
+        png: flags.png,
+      },
+    }),
+  );
   return (
     <main className="p-10">
-      <CountryList countries={countires} />
+      <CountryList countries={countries} />
     </main>
   );
 }

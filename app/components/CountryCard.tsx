@@ -14,11 +14,11 @@ export default function CountryCard({
   return (
     <Link
       href={`/country/${country.alpha3Code}`}
-      className="block rounded-md transition-transform duration-200 hover:-translate-y-1 focus-visible::ring-2 focus-visible:ring-(--foreground)"
+      className="block rounded-md transition-transform duration-200 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2  focus-visible:outline-(--foreground)"
     >
       <article className="h-full overflow-hidden rounded-md bg-(--element) shadow-sm transition-shadow duration-200 hover:shadow-lg">
         <Image
-          src={country.flags.svg}
+          src={country.flags.png}
           alt={`Flag of ${country.name}`}
           className="w-full object-cover h-48 sm:h-44 "
           width={640}
@@ -30,7 +30,7 @@ export default function CountryCard({
           <h2 className="font-bold pb-2 text-base sm:text-lg">
             {country.name}
           </h2>
-          <div className="space-y-1 text-sm sm:text-sm mg:text-base">
+          <div className="space-y-1 text-sm sm:text-sm md:text-base">
             <p>
               <span className="font-semibold">Population:</span>{" "}
               <span className="font-medium">

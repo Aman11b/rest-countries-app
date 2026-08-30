@@ -5,7 +5,6 @@ import {
   getBorderCountries,
   getCountry,
 } from "@/app/lib/utils";
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -21,12 +20,12 @@ export default async function CountryPage({ params }: CountryPageProps) {
     notFound();
   }
   return (
-    <main className="px-6 py-8 sm:px-8 sm:py-10 md:px10 md:py-12">
+    <main className="px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12">
       <BackButton />
-      <div className="mt-12 flex flex-col gap-10 sm:gap-12 ms:mt-16 md:flex-row md:items-center  lg:gap-20 md:gap-16 ">
+      <div className="mt-12 flex flex-col gap-10 sm:gap-12 md:mt-16 md:flex-row md:items-center  lg:gap-20 md:gap-16 ">
         <div className="w-full md:w-1/2">
           <Image
-            src={country?.flags.svg}
+            src={country?.flags.png}
             height={860}
             width={1280}
             alt={`${country?.name} flag`}

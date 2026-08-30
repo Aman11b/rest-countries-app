@@ -8,8 +8,11 @@ export default function Header() {
   const [darkMode, setDarkMode] = useState(false);
 
   function toggleDarkMode() {
-    setDarkMode((prev) => !prev);
-    document.documentElement.classList.toggle("dark");
+    setDarkMode((prev) => {
+      const newMode = !prev;
+      document.documentElement.classList.toggle("dark", newMode);
+      return newMode;
+    });
   }
   return (
     <header className="bg-(--element) shadow-sm transition-colors duration-300">
@@ -18,7 +21,7 @@ export default function Header() {
           href="/"
           className="text-base sm:text-lg font-extrabold whitespace-nowrap"
         >
-          <h1>Where in the world?</h1>
+          Where in the world?
         </Link>
         <button
           type="button"
